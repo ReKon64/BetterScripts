@@ -167,7 +167,7 @@ mib_exp.each do |key, value_array|
         end
       end
 
-      # Optionally, read from stderr in real-time if needed
+      # Stderr in realtime
       stderr_thread = Thread.new do
         stderr.each_line do |line|
           # Handle standard error output
