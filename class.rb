@@ -6,7 +6,7 @@ class NmapXMLParser
     raise "Path can't be nil" if path.nil?
 
     @path = path
-    @hosts = {}  # Initialize @hosts as an instance variable to accumulate data
+    @hosts = {}
     is_accessible?
   end
 
