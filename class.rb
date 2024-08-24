@@ -6,7 +6,7 @@ class NmapXMLParser
     raise "Path can't be nil" if path.nil?
 
     @path = path
-    @hosts = {}  # Initialize @hosts as an instance variable to accumulate data
+    @hosts = {}
     is_accessible?
   end
 
@@ -50,9 +50,9 @@ class NmapXMLParser
         # Store port data in the host_ports hash
         host_ports[port_id] = {
           protocol: protocol,
-          state: state || "unknown",  # Default to "unknown" if state is nil
-          product: product || "unknown",  # Default to "unknown" if product is nil
-          service_name: service_name || "unknown"  # Default to "unknown" if service_name is nil
+          state: state || "unknown",  # Default to "unknown" if nil
+          product: product || "unknown",  
+          service_name: service_name || "unknown"  
         }
       end
 
@@ -82,17 +82,6 @@ parser.parse
 
 
 =begin
-nmapData = nmapXMLParser.new("/path/nmap.xml")
-nmapData.getFTP
-  output FTP ports
-nmapData.getHTTP
-  output HTTP ports
-
-    for object in xml do:
-      port.at_xpath('object')&.then do |object_element|
-      {
-        object: service_element['product'],
-        name: service_element['name'],
-      }
-
+.getByProto("http","optional hostIP")
+if no hostIP, get all ports from diff hosts and print their owners
 =end
